@@ -1,0 +1,12 @@
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\bin\Debug\SoftwareIncSoftwareCreator.exe.config
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\bin\Debug\SoftwareIncSoftwareCreator.exe
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\bin\Debug\SoftwareIncSoftwareCreator.pdb
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.Properties.Resources.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csproj.GenerateResource.cache
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csproj.CoreCompileInputs.cache
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.exe
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.pdb
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.Form1.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewModMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\bin\Debug\Resources\Software Inc.jpg
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csprojAssemblyReference.cache
