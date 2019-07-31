@@ -43,5 +43,10 @@ namespace SoftwareIncSoftwareCreator.LIB
             Categories = categories;
             Features = features;
         }
+
+        public SoftwareType()
+        {
+
+        }
     }
 }

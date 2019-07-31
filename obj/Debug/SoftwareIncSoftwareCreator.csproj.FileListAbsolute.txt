@@ -6,7 +6,10 @@ C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csproj.CoreCompileInputs.cache
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.exe
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.pdb
-C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.Form1.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewModMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\bin\Debug\Resources\Software Inc.jpg
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.MainMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewCategoryMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewFeatureMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewSoftwareTypeMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csprojAssemblyReference.cache

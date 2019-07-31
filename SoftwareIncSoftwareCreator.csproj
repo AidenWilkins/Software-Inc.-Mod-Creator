@@ -48,11 +48,23 @@
   <ItemGroup>
     <Compile Include="Categories.cs" />
     <Compile Include="Features.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCategoryMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCategoryMenu.Designer.cs">
+      <DependentUpon>NewCategoryMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFeatureMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFeatureMenu.Designer.cs">
+      <DependentUpon>NewFeatureMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="NewModMenu.cs">
       <SubType>Form</SubType>
@@ -60,14 +72,30 @@
     <Compile Include="NewModMenu.Designer.cs">
       <DependentUpon>NewModMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewSoftwareTypeMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSoftwareTypeMenu.Designer.cs">
+      <DependentUpon>NewSoftwareTypeMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SISCFileType.cs" />
     <Compile Include="SoftwareType.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCategoryMenu.resx">
+      <DependentUpon>NewCategoryMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFeatureMenu.resx">
+      <DependentUpon>NewFeatureMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewModMenu.resx">
       <DependentUpon>NewModMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSoftwareTypeMenu.resx">
+      <DependentUpon>NewSoftwareTypeMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,7 +23,10 @@ namespace SoftwareIncSoftwareCreator.LIB
         public string Sability;
         public string CodeArt;
         public string Server;
-        public List<string> Dependency;
+
+        //TODO add software category & dependcy support
+        public List<string> SoftwareDependency;
+        public List<string> SoftwareCategory;
 
         public Features(string from, bool forced, bool vital, string research, string description, string name, string category, string artCategory, string unlock, string devTime, string innovation, string usability, string sability, string codeArt, string server, List<string> dependency)
         {
@@ -42,9 +45,7 @@ namespace SoftwareIncSoftwareCreator.LIB
             Sability = sability;
             CodeArt = codeArt;
             Server = server;
-            Dependency = dependency;
+            SoftwareDependency = dependency;
         }
-        //TODO add software category support
-
     }
 }
