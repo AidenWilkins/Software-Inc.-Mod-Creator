@@ -48,12 +48,19 @@
   <ItemGroup>
     <Compile Include="Categories.cs" />
     <Compile Include="Features.cs" />
+    <Compile Include="LoadModMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadModMenu.Designer.cs">
+      <DependentUpon>LoadModMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NameGenerator.cs" />
     <Compile Include="NewCategoryMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +79,12 @@
     <Compile Include="NewModMenu.Designer.cs">
       <DependentUpon>NewModMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewNameGeneratorMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewNameGeneratorMenu.Designer.cs">
+      <DependentUpon>NewNameGeneratorMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewSoftwareTypeMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +95,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SISCFileType.cs" />
     <Compile Include="SoftwareType.cs" />
+    <EmbeddedResource Include="LoadModMenu.resx">
+      <DependentUpon>LoadModMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NewModMenu.resx">
       <DependentUpon>NewModMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewNameGeneratorMenu.resx">
+      <DependentUpon>NewNameGeneratorMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewSoftwareTypeMenu.resx">
       <DependentUpon>NewSoftwareTypeMenu.cs</DependentUpon>

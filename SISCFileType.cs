@@ -10,56 +10,62 @@ namespace SoftwareIncSoftwareCreator.LIB
 {
     public class SISCFileType
     {
-        public static void Write(SoftwareType softwareType, string fileName = "Test.sisc")
+        public static void Write(List<SoftwareType> softwareTypes, string modName)
         {
-            string output = "";
-            output += "Name = [" + softwareType.Name + "]\n";
-            output += "Unlock = [" + softwareType.Unlock + "]\n";
-            output += "Category = [" + softwareType.Category + "]\n";
-            output += "Description = [" + softwareType.Description + "]\n";
-            output += "Random = [" + softwareType.Random + "]\n";
-            output += "OSSpecific = [" + softwareType.OSSpecific + "]\n";
-            output += "OneClient = [" + softwareType.OneClient + "]\n";
-            output += "InHouse = [" + softwareType.InHouse + "]\n";
-            output += "IdealPrice = [" + softwareType.IdealPrice + "]\n";
-            output += "NameGenerator = [" + softwareType.NameGenerator + "]\n";
-            output += "TimeScale = [" + softwareType.TimeScale + "]\n";
-            output += "Iterative = [" + softwareType.Iterative + "]\n";
-            output += "Retention = [" + softwareType.Retention + "]\n";
-            output += "Popularity = [" + softwareType.Popularity + "]\n";
+            Directory.CreateDirectory("SaveData\\" + modName);
 
-            foreach (Features feature in softwareType.Features)
+            foreach (SoftwareType softwareType in softwareTypes)
             {
-                output += "Feature";
-                output += "[Name = " + feature.Name + "]";
-                output += "[Unlock = " + feature.Unlock + "]";
-                output += "[Category = " + feature.Category + "]";
-                output += "[Description = " + feature.Description + "]";
-                output += "[DevTime = " + feature.DevTime + "]";
-                output += "[Innovation = " + feature.Innovation + "]";
-                output += "[Usability = " + feature.Usability + "]";
-                output += "[Stability = " + feature.Sability + "]";
-                output += "[CodeArt = " + feature.CodeArt + "]";
-                output += "[ArtCategory = " + feature.ArtCategory + "]";
-                output += "[From = " + feature.From + "]";
-                output += "[Forced = " + feature.Forced + "]";
-                output += "[Vital = " + feature.Vital + "]";
-                output += "[Research = " + feature.Research + "]";
-                output += "[Server = " + feature.Server + "]\n";
-            }
 
-            foreach (Categories category in softwareType.Categories)
-            {
-                output += "Category";
-                output += "[Name = " + category.Name + "]";
-                output += "[unlock = " + category.Unlock + "]";
-                output += "[Popularity = " + category.Popularity + "]";
-                output += "[Retention = " + category.Retention + "]";
-                output += "[TimeScale = " + category.TimeScale + "]";
-                output += "[Iterative = " + category.Iterative + "]";
-                output += "[Description = " + category.Description + "]\n";
+                string output = "";
+                output += "Name = [" + softwareType.Name + "]\n";
+                output += "Unlock = [" + softwareType.Unlock + "]\n";
+                output += "Category = [" + softwareType.Category + "]\n";
+                output += "Description = [" + softwareType.Description + "]\n";
+                output += "Random = [" + softwareType.Random + "]\n";
+                output += "OSSpecific = [" + softwareType.OSSpecific + "]\n";
+                output += "OneClient = [" + softwareType.OneClient + "]\n";
+                output += "InHouse = [" + softwareType.InHouse + "]\n";
+                output += "IdealPrice = [" + softwareType.IdealPrice + "]\n";
+                output += "NameGenerator = [" + softwareType.NameGenerator + "]\n";
+                output += "TimeScale = [" + softwareType.TimeScale + "]\n";
+                output += "Iterative = [" + softwareType.Iterative + "]\n";
+                output += "Retention = [" + softwareType.Retention + "]\n";
+                output += "Popularity = [" + softwareType.Popularity + "]\n";
+
+                foreach (Features feature in softwareType.Features)
+                {
+                    output += "Feature";
+                    output += "[Name = " + feature.Name + "]";
+                    output += "[Unlock = " + feature.Unlock + "]";
+                    output += "[Category = " + feature.Category + "]";
+                    output += "[Description = " + feature.Description + "]";
+                    output += "[DevTime = " + feature.DevTime + "]";
+                    output += "[Innovation = " + feature.Innovation + "]";
+                    output += "[Usability = " + feature.Usability + "]";
+                    output += "[Stability = " + feature.Sability + "]";
+                    output += "[CodeArt = " + feature.CodeArt + "]";
+                    output += "[ArtCategory = " + feature.ArtCategory + "]";
+                    output += "[From = " + feature.From + "]";
+                    output += "[Forced = " + feature.Forced + "]";
+                    output += "[Vital = " + feature.Vital + "]";
+                    output += "[Research = " + feature.Research + "]";
+                    output += "[Server = " + feature.Server + "]\n";
+                }
+
+                foreach (Categories category in softwareType.Categories)
+                {
+                    output += "Category";
+                    output += "[Name = " + category.Name + "]";
+                    output += "[unlock = " + category.Unlock + "]";
+                    output += "[Popularity = " + category.Popularity + "]";
+                    output += "[Retention = " + category.Retention + "]";
+                    output += "[TimeScale = " + category.TimeScale + "]";
+                    output += "[Iterative = " + category.Iterative + "]";
+                    output += "[Description = " + category.Description + "]\n";
+                }
+                File.WriteAllText("SaveData\\" + modName + "\\" + softwareType.Name + ".sisc", output);
             }
-            File.WriteAllText(fileName, output);
         }
 
         public static SoftwareType Read(string fileName = "Test.sisc")

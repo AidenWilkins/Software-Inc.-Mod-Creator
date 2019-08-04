@@ -7,120 +7,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SoftwareIncSoftwareCreator.LIB;
 
 namespace SoftwareIncSoftwareCreator
 {
-    public partial class NewSoftwareTypeMenu : Form
+    public partial class NewNameGeneratorMenu : Form
     {
-        public NewSoftwareTypeMenu()
+        public NewNameGeneratorMenu()
         {
             InitializeComponent();
-            OkBTN.DialogResult = DialogResult.OK;
+            comboBox1.SelectedIndex = 0;
+            button8.DialogResult = DialogResult.Cancel;
+            button9.DialogResult = DialogResult.OK;
         }
 
-        public string Name_ => textBox1.Text;
-        public string Unlock => textBox2.Text;
-        public string Category => textBox3.Text;
-        public string Description => textBox6.Text;
-        public string Random => textBox5.Text;
-        public string Popularity => textBox4.Text;
-        public string Retention => textBox9.Text;
-        public string Iterative => textBox8.Text;
-        public string TimeScale => textBox7.Text;
-        public string OSLimit => (comboBox1.SelectedItem == null) ? "n/a" : comboBox1.SelectedItem.ToString(); //Phone, Console, Computer
-        public string NameGenerator => (comboBox2.SelectedItem == null) ? "n/a" : comboBox2.SelectedItem.ToString();
-        public string IdealPrice => textBox10.Text;
-        public bool OSSpecific => checkBox1.Checked;
-        public bool OneClient => checkBox2.Checked;
-        public bool InHouse => checkBox3.Checked;
-        public List<NameGenerator> NameGens;
+        public string[] Base => listBox1.Items.OfType<string>().ToArray();
+        public string[] Base2 => listBox2.Items.OfType<string>().ToArray();
+        public string[] End => listBox3.Items.OfType<string>().ToArray();
+        public string Name_ => textBox4.Text;
 
-        #region TextboxStuff
-        private void textBox1_Leave(object sender, EventArgs e)
+        private void Preview()
         {
-            if (textBox1.Text == "")
-            {
-                textBox1.Text = "n/a";
-            }
-        }
+            string[] Base_ = listBox1.Items.OfType<string>().ToArray();
+            string[] Base2_ = listBox2.Items.OfType<string>().ToArray();
+            string[] End_ = listBox3.Items.OfType<string>().ToArray();
 
-        private void textBox2_Leave(object sender, EventArgs e)
-        {
-            if (textBox2.Text == "")
-            {          
-                textBox2.Text = "n/a";
-            }
-        }
 
-        private void textBox3_Leave(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "")
+            Random random = new Random();
+            string output = "";
+            listBox4.Items.Clear();
+            try
             {
-                textBox3.Text = "n/a";
+                for (int i = 0; i < int.Parse(comboBox1.SelectedItem.ToString()); i++)
+                {
+                    output = Base_[random.Next(0, Base_.Length)];
+                    int x = random.Next(0, 2);
+                    if (x == 0)
+                    {
+                        output += Base2_[random.Next(0, Base2_.Length)];
+                        int y = random.Next(0, 1);
+                        if (y == 0)
+                        {
+                            output += End_[random.Next(0, End_.Length)];
+                            listBox4.Items.Add(output);
+                        }
+                        else
+                        {
+                            listBox4.Items.Add(output);
+                            break;
+                        }
+                    }
+                    else if (x == 1)
+                    {
+                        output += End_[random.Next(0, End_.Length)];
+                        listBox4.Items.Add(output);
+                    }
+                    else
+                    {
+                        listBox4.Items.Add(output);
+                        break;
+                    }
+                }
             }
-        }
-        private void textBox4_Leave(object sender, EventArgs e)
-        {
-            if (textBox4.Text == "")
+            catch (IndexOutOfRangeException)
             {
-                textBox4.Text = "n/a";
-            }
-        }
-        private void textBox5_Leave(object sender, EventArgs e)
-        {
-            if (textBox5.Text == "")
-            {
-                textBox5.Text = "n/a";
-            }
-        }
-        private void textBox6_Leave(object sender, EventArgs e)
-        {
-            if (textBox6.Text == "")
-            {
-                textBox6.Text = "n/a";
-            }
-        }
-        private void textBox7_Leave(object sender, EventArgs e)
-        {
-            if (textBox7.Text == "")
-            {
-                textBox7.Text = "n/a";
-            }
-        }
-        private void textBox8_Leave(object sender, EventArgs e)
-        {
-            if (textBox8.Text == "")
-            {
-                textBox8.Text = "n/a";
-            }
-        }
-        private void textBox9_Leave(object sender, EventArgs e)
-        {
-            if (textBox9.Text == "")
-            {
-                textBox9.Text = "n/a";
-            }
-        }
-        private void textBox10_Leave(object sender, EventArgs e)
-        {
-            if (textBox10.Text == "")
-            {
-                textBox10.Text = "n/a";
+
             }
         }
 
-        private void comboBox1_Leave(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedText == "")
-            {
-                comboBox1.SelectedText = "n/a";
-            }
+            listBox1.Items.Add(textBox1.Text);
+            textBox1.Text = "";
+            Preview();
         }
-        #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Add(textBox2.Text);
+            textBox2.Text = "";
+            Preview();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listBox3.Items.Add(textBox3.Text);
+            textBox3.Text = "";
+            Preview();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Preview();
+        }
 
         public int Style { get; set; }
-        private void NewSoftwareTypeMenu_Load(object sender, EventArgs e)
+        private void NewNameGeneratorMenu_Load(object sender, EventArgs e)
         {
             #region Set Theme
             if (Style == 0)
@@ -271,10 +252,6 @@ namespace SoftwareIncSoftwareCreator
                 }
             }
             #endregion
-            foreach (NameGenerator i in NameGens)
-            {
-                comboBox2.Items.Add(i.Name);
-            }
         }
     }
 }

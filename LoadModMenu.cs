@@ -7,120 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SoftwareIncSoftwareCreator.LIB;
+using System.IO;
 
 namespace SoftwareIncSoftwareCreator
 {
-    public partial class NewSoftwareTypeMenu : Form
+    public partial class LoadModMenu : Form
     {
-        public NewSoftwareTypeMenu()
+        public LoadModMenu()
         {
             InitializeComponent();
-            OkBTN.DialogResult = DialogResult.OK;
-        }
-
-        public string Name_ => textBox1.Text;
-        public string Unlock => textBox2.Text;
-        public string Category => textBox3.Text;
-        public string Description => textBox6.Text;
-        public string Random => textBox5.Text;
-        public string Popularity => textBox4.Text;
-        public string Retention => textBox9.Text;
-        public string Iterative => textBox8.Text;
-        public string TimeScale => textBox7.Text;
-        public string OSLimit => (comboBox1.SelectedItem == null) ? "n/a" : comboBox1.SelectedItem.ToString(); //Phone, Console, Computer
-        public string NameGenerator => (comboBox2.SelectedItem == null) ? "n/a" : comboBox2.SelectedItem.ToString();
-        public string IdealPrice => textBox10.Text;
-        public bool OSSpecific => checkBox1.Checked;
-        public bool OneClient => checkBox2.Checked;
-        public bool InHouse => checkBox3.Checked;
-        public List<NameGenerator> NameGens;
-
-        #region TextboxStuff
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "")
+            button1.DialogResult = DialogResult.OK;
+            button3.DialogResult = DialogResult.Cancel;
+            string[] modDir = Directory.GetDirectories("SaveData");
+            foreach (string dir in modDir)
             {
-                textBox1.Text = "n/a";
+                listBox1.Items.Add(new DirectoryInfo(dir).Name);
             }
         }
 
-        private void textBox2_Leave(object sender, EventArgs e)
-        {
-            if (textBox2.Text == "")
-            {          
-                textBox2.Text = "n/a";
-            }
-        }
-
-        private void textBox3_Leave(object sender, EventArgs e)
-        {
-            if (textBox3.Text == "")
-            {
-                textBox3.Text = "n/a";
-            }
-        }
-        private void textBox4_Leave(object sender, EventArgs e)
-        {
-            if (textBox4.Text == "")
-            {
-                textBox4.Text = "n/a";
-            }
-        }
-        private void textBox5_Leave(object sender, EventArgs e)
-        {
-            if (textBox5.Text == "")
-            {
-                textBox5.Text = "n/a";
-            }
-        }
-        private void textBox6_Leave(object sender, EventArgs e)
-        {
-            if (textBox6.Text == "")
-            {
-                textBox6.Text = "n/a";
-            }
-        }
-        private void textBox7_Leave(object sender, EventArgs e)
-        {
-            if (textBox7.Text == "")
-            {
-                textBox7.Text = "n/a";
-            }
-        }
-        private void textBox8_Leave(object sender, EventArgs e)
-        {
-            if (textBox8.Text == "")
-            {
-                textBox8.Text = "n/a";
-            }
-        }
-        private void textBox9_Leave(object sender, EventArgs e)
-        {
-            if (textBox9.Text == "")
-            {
-                textBox9.Text = "n/a";
-            }
-        }
-        private void textBox10_Leave(object sender, EventArgs e)
-        {
-            if (textBox10.Text == "")
-            {
-                textBox10.Text = "n/a";
-            }
-        }
-
-        private void comboBox1_Leave(object sender, EventArgs e)
-        {
-            if (comboBox1.SelectedText == "")
-            {
-                comboBox1.SelectedText = "n/a";
-            }
-        }
-        #endregion
+        public string ModName => listBox1.Items[listBox1.SelectedIndex].ToString();
 
         public int Style { get; set; }
-        private void NewSoftwareTypeMenu_Load(object sender, EventArgs e)
+        private void LoadModMenu_Load(object sender, EventArgs e)
         {
             #region Set Theme
             if (Style == 0)
@@ -271,10 +179,6 @@ namespace SoftwareIncSoftwareCreator
                 }
             }
             #endregion
-            foreach (NameGenerator i in NameGens)
-            {
-                comboBox2.Items.Add(i.Name);
-            }
         }
     }
 }

@@ -13,3 +13,5 @@ C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewFeatureMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewSoftwareTypeMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.csprojAssemblyReference.cache
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.NewNameGeneratorMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Debug\SoftwareIncSoftwareCreator.LoadModMenu.resources

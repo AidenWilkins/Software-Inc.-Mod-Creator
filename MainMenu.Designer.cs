@@ -56,6 +56,8 @@
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToGameModFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.themeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
@@ -80,6 +82,10 @@
             this.button10 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.listBox6 = new System.Windows.Forms.ListBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -302,23 +308,39 @@
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem1.Text = "Save";
             this.saveToolStripMenuItem1.Click += new System.EventHandler(this.saveToolStripMenuItem1_Click);
             // 
             // loadToolStripMenuItem1
             // 
             this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
-            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem1.Text = "Load";
             this.loadToolStripMenuItem1.Click += new System.EventHandler(this.loadToolStripMenuItem1_Click);
             // 
             // exportToolStripMenuItem
             // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToolStripMenuItem1,
+            this.exportToGameModFolderToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.exportToolStripMenuItem.Text = "Export";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.saveExportToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem1
+            // 
+            this.exportToolStripMenuItem1.Name = "exportToolStripMenuItem1";
+            this.exportToolStripMenuItem1.Size = new System.Drawing.Size(220, 22);
+            this.exportToolStripMenuItem1.Text = "Export";
+            this.exportToolStripMenuItem1.Click += new System.EventHandler(this.saveExportToolStripMenuItem_Click);
+            // 
+            // exportToGameModFolderToolStripMenuItem
+            // 
+            this.exportToGameModFolderToolStripMenuItem.Name = "exportToGameModFolderToolStripMenuItem";
+            this.exportToGameModFolderToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.exportToGameModFolderToolStripMenuItem.Text = "Export to Game Mod Folder";
+            this.exportToGameModFolderToolStripMenuItem.Click += new System.EventHandler(this.exportToGameModFolderToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem1
             // 
@@ -354,6 +376,7 @@
             this.setGameDirectoryToolStripMenuItem.Name = "setGameDirectoryToolStripMenuItem";
             this.setGameDirectoryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setGameDirectoryToolStripMenuItem.Text = "Set Game Directory";
+            this.setGameDirectoryToolStripMenuItem.Click += new System.EventHandler(this.setGameDirectoryToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem1
             // 
@@ -463,18 +486,17 @@
             // 
             // button7
             // 
-            this.button7.Enabled = false;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(94, 309);
+            this.button7.Location = new System.Drawing.Point(175, 309);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 75;
             this.button7.Text = "Remove";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
-            this.button8.Enabled = false;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Location = new System.Drawing.Point(13, 309);
             this.button8.Name = "button8";
@@ -482,11 +504,11 @@
             this.button8.TabIndex = 74;
             this.button8.Text = "Add";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Enabled = false;
             this.label10.Location = new System.Drawing.Point(10, 192);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 13);
@@ -496,7 +518,6 @@
             // listBox5
             // 
             this.listBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listBox5.Enabled = false;
             this.listBox5.FormattingEnabled = true;
             this.listBox5.Location = new System.Drawing.Point(13, 208);
             this.listBox5.Name = "listBox5";
@@ -507,7 +528,7 @@
             // 
             this.button9.Enabled = false;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(287, 309);
+            this.button9.Location = new System.Drawing.Point(471, 309);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 79;
@@ -518,7 +539,7 @@
             // 
             this.button10.Enabled = false;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(206, 309);
+            this.button10.Location = new System.Drawing.Point(309, 309);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(75, 23);
             this.button10.TabIndex = 78;
@@ -529,7 +550,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Enabled = false;
-            this.label11.Location = new System.Drawing.Point(203, 192);
+            this.label11.Location = new System.Drawing.Point(306, 192);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 77;
@@ -540,10 +561,36 @@
             this.listBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listBox6.Enabled = false;
             this.listBox6.FormattingEnabled = true;
-            this.listBox6.Location = new System.Drawing.Point(206, 208);
+            this.listBox6.Location = new System.Drawing.Point(309, 208);
             this.listBox6.Name = "listBox6";
             this.listBox6.Size = new System.Drawing.Size(156, 91);
             this.listBox6.TabIndex = 76;
+            // 
+            // button11
+            // 
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.Location = new System.Drawing.Point(94, 309);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(75, 23);
+            this.button11.TabIndex = 80;
+            this.button11.Text = "Import";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Enabled = false;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Location = new System.Drawing.Point(390, 309);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(75, 23);
+            this.button12.TabIndex = 81;
+            this.button12.Text = "Import";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // MainMenu
             // 
@@ -551,6 +598,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(644, 566);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.label11);
@@ -584,7 +633,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainMenu";
-            this.Text = "Software Inc. Mod Creator (Beta)";
+            this.Text = "Software Inc. Mod Creator (Alpha)";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -647,6 +696,12 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exportToGameModFolderToolStripMenuItem;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
