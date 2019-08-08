@@ -47,7 +47,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categories.cs" />
+    <Compile Include="ColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Features.cs" />
+    <Compile Include="Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Info.Designer.cs">
+      <DependentUpon>Info.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadModMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SISCFileType.cs" />
     <Compile Include="SoftwareType.cs" />
+    <Compile Include="TabTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabTesting.Designer.cs">
+      <DependentUpon>TabTesting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThemeCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThemeCreator.Designer.cs">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ColorPicker.resx">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Info.resx">
+      <DependentUpon>Info.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoadModMenu.resx">
       <DependentUpon>LoadModMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +155,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TabTesting.resx">
+      <DependentUpon>TabTesting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemeCreator.resx">
+      <DependentUpon>ThemeCreator.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

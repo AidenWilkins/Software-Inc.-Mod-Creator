@@ -1,0 +1,13 @@
+<Theme>
+	<DisplayName>Dark</DisplayName>
+	<Creator></Creator>
+	<!-- Color need to a argb color code -->
+	<WindowColors ForeColor="-16777216" BackColor="-14277077"/> <!--BackColor can also be a image path (only for WindowColors)-->
+	<ListBoxColors ForeColor="-14451810" BackColor="-13421769"/>
+	<TextBoxColors ForeColor="-14451810" BackColor="-13421769"/>
+	<LabelColors ForeColor="-14451810" BackColor="-14277077"/>
+	<CheckBoxColors ForeColor="-14451810" BackColor="-13421769"/>
+	<ComboBoxColors ForeColor="-14451810" BackColor="-13421769"/>
+	<ButtonColors ForeColor="-14451810" BackColor="-13421769"/>
+	<MenuStripColors ForeColor="-14451810" BackColor="-14277077"/>
+</Theme>

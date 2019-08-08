@@ -15,3 +15,7 @@ C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Relea
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.NewFeatureMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.NewNameGeneratorMenu.resources
 C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.NewSoftwareTypeMenu.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.ColorPicker.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.ThemeCreator.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.Info.resources
+C:\Users\aiden\source\repos\Nova jar Runner\SoftwareIncSoftwareCreator\obj\Release\SoftwareIncSoftwareCreator.TabTesting.resources

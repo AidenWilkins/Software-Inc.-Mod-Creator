@@ -61,6 +61,7 @@
             this.settingsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.themeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.themeCreatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setGameDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.applyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -356,20 +357,24 @@
             // themeToolStripMenuItem1
             // 
             this.themeToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripComboBox2});
+            this.toolStripComboBox2,
+            this.themeCreatorToolStripMenuItem});
             this.themeToolStripMenuItem1.Name = "themeToolStripMenuItem1";
             this.themeToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.themeToolStripMenuItem1.Text = "Theme";
             // 
             // toolStripComboBox2
             // 
-            this.toolStripComboBox2.Items.AddRange(new object[] {
-            "Light",
-            "Dark",
-            "Software Inc. Fall"});
             this.toolStripComboBox2.Name = "toolStripComboBox2";
             this.toolStripComboBox2.Size = new System.Drawing.Size(121, 23);
             this.toolStripComboBox2.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox2_SelectedIndexChanged);
+            // 
+            // themeCreatorToolStripMenuItem
+            // 
+            this.themeCreatorToolStripMenuItem.Name = "themeCreatorToolStripMenuItem";
+            this.themeCreatorToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.themeCreatorToolStripMenuItem.Text = "Theme Creator";
+            this.themeCreatorToolStripMenuItem.Click += new System.EventHandler(this.themeCreatorToolStripMenuItem_Click);
             // 
             // setGameDirectoryToolStripMenuItem
             // 
@@ -383,6 +388,7 @@
             this.infoToolStripMenuItem1.Name = "infoToolStripMenuItem1";
             this.infoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.infoToolStripMenuItem1.Text = "Info";
+            this.infoToolStripMenuItem1.Click += new System.EventHandler(this.infoToolStripMenuItem1_Click);
             // 
             // applyToolStripMenuItem
             // 
@@ -702,6 +708,7 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem themeCreatorToolStripMenuItem;
     }
 }
 

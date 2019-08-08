@@ -57,6 +57,7 @@ namespace SoftwareIncSoftwareCreator
             //settingsxml.WriteEndDocument();
             //settingsxml.Close();
 
+            bool wati = LoadThemes();
             XmlReader xmlReader = XmlReader.Create("settings.xml");
             while (xmlReader.Read())
             {
@@ -70,7 +71,7 @@ namespace SoftwareIncSoftwareCreator
                         }
                         else if(xmlReader.GetAttribute("name") == "style")
                         {
-                            currStyle = int.Parse(xmlReader.ReadInnerXml());
+                            currStyle = xmlReader.ReadInnerXml();
                             SetTheme(currStyle);
                         }
                     }
@@ -78,14 +79,14 @@ namespace SoftwareIncSoftwareCreator
             }
         }
 
-        int currStyle = 0;
+        string currStyle = "";
 
 
         private void newModToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (NewModMenu m = new NewModMenu())
             {
-                m.Style = currStyle;
+                m.Style = displayNameToFile[currStyle];
                 if (m.ShowDialog() == DialogResult.OK)
                 {
                     SoftwareTypes = new List<SoftwareType>();
@@ -109,6 +110,7 @@ namespace SoftwareIncSoftwareCreator
             using (NewCategoryMenu ncm = new NewCategoryMenu())
             {
                 ncm.BackColor = BackColor;
+                ncm.Style = displayNameToFile[currStyle];
                 if (ncm.ShowDialog() == DialogResult.OK)
                 {
                     SoftwareTypes[listBox4.SelectedIndex].Categories.Add(new Categories(ncm.Popularity, ncm.Retention, ncm.Iterative, ncm.TimeScale, ncm.Description, ncm.Name_, ncm.Unlock));
@@ -129,6 +131,7 @@ namespace SoftwareIncSoftwareCreator
             using(NewFeatureMenu nfm = new NewFeatureMenu())
             {
                 nfm.BackColor = BackColor;
+                nfm.Style = displayNameToFile[currStyle];
                 if (nfm.ShowDialog() == DialogResult.OK)
                 {
                     SoftwareTypes[listBox4.SelectedIndex].Features.Add(new Features(nfm.From, nfm.Forced, nfm.Vital, nfm.Research, nfm.Description, nfm.Name_, nfm.Category, nfm.ArtCategory, 
@@ -500,7 +503,7 @@ namespace SoftwareIncSoftwareCreator
 
             settingsxml.WriteStartElement("Setting");
             settingsxml.WriteAttributeString("name", "style");
-            settingsxml.WriteString(currStyle.ToString());
+            settingsxml.WriteString(currStyle);
 
             settingsxml.WriteEndDocument();
             settingsxml.Close();
@@ -511,240 +514,215 @@ namespace SoftwareIncSoftwareCreator
             
         }
 
+        Dictionary<string, string> displayNameToFile = new Dictionary<string, string>();
+
         private void toolStripComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SetTheme(toolStripComboBox2.SelectedIndex);
+            SetTheme(toolStripComboBox2.Items[toolStripComboBox2.SelectedIndex].ToString());
         }
 
-        private void SetTheme(int theme)
+        private void SetTheme(string displayName)
         {
             label23.Text = "Mod Creator: Setting Theme";
             listBox3.Items.Add("Mod Creator: Setting Theme");
-            toolStripComboBox2.SelectedIndex = theme;
-            if (theme == 0)
+
+            currStyle = displayName;
+
+            #region
+            try
             {
-                currStyle = 0;
-                BackColor = Color.WhiteSmoke;
-                BackgroundImage = null;
-                label23.Text = "Mod Creator: Set Theme To Light";
-                listBox3.Items.Add("Mod Creator: Set Theme To Light");
-                foreach (Control child in this.Controls)
+                if (File.Exists("Themes//" + displayNameToFile[displayName] + ".xml"))
                 {
-                    if (child is ListBox)
+                    XmlReader reader = XmlReader.Create("Themes//" + displayNameToFile[displayName] + ".xml");
+                    while (reader.Read())
                     {
-                        ListBox lbl = (ListBox)child;
-                        lbl.ForeColor = Color.Gray;
-                        lbl.BackColor = Color.White;
-                    }
-
-                    if (child is TextBox)
-                    {
-                        TextBox cb = (TextBox)child;
-                        cb.ForeColor = Color.Gray;
-                        cb.BackColor = Color.White;
-                    }
-
-                    if (child is Label)
-                    {
-                        Label cb = (Label)child;
-                        cb.ForeColor = Color.Gray;
-                    }
-
-                    if (child is CheckBox)
-                    {
-                        CheckBox cb = (CheckBox)child;
-                        cb.ForeColor = Color.Gray;
-                    }
-
-                    if (child is ComboBox)
-                    {
-                        ComboBox cb = (ComboBox)child;
-                        cb.ForeColor = Color.Gray;
-                        cb.BackColor = Color.White;
-                    }
-
-                    if (child is Button)
-                    {
-                        Button cb = (Button)child; ;
-                        cb.FlatAppearance.BorderSize = 0;
-                        cb.ForeColor = Color.Gray;
-                        cb.BackColor = Color.White;
-                    }
-
-                    if (child is MenuStrip)
-                    {
-                        MenuStrip cb = (MenuStrip)child;
-                        cb.ForeColor = Color.Gray;
-                        cb.BackColor = Color.White;
-
-                        foreach (ToolStripMenuItem firstLayer in cb.Items)
+                        if (reader.NodeType == XmlNodeType.Element)
                         {
-                            firstLayer.ForeColor = Color.Gray;
-                            firstLayer.BackColor = Color.White;
-                            foreach (ToolStripMenuItem secondLayer in firstLayer.DropDownItems)
+                            if (reader.Name == "WindowColors")
                             {
-                                secondLayer.ForeColor = Color.Gray;
-                                secondLayer.BackColor = Color.White;
-                                foreach (ToolStripComboBox thridLayer in secondLayer.DropDownItems)
+                                BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                            }
+                            else if (reader.Name == "ListBoxColors")
+                            {
+                                foreach (Control listBox in this.Controls)
                                 {
-                                    thridLayer.ForeColor = Color.Gray;
-                                    thridLayer.BackColor = Color.White;
+                                    if (listBox is ListBox)
+                                    {
+                                        listBox.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        listBox.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "TextBoxColors")
+                            {
+                                foreach (Control textBox in this.Controls)
+                                {
+                                    if (textBox is TextBox)
+                                    {
+                                        textBox.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        textBox.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "LabelColors")
+                            {
+                                foreach (Control label in this.Controls)
+                                {
+                                    if (label is Label)
+                                    {
+                                        label.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        label.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "CheckBoxColors")
+                            {
+                                foreach (Control checkBox in this.Controls)
+                                {
+                                    if (checkBox is CheckBox)
+                                    {
+                                        checkBox.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        checkBox.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "ComboBoxColors")
+                            {
+                                foreach (Control comboBox in this.Controls)
+                                {
+                                    if (comboBox is ComboBox)
+                                    {
+                                        comboBox.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        comboBox.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "ButtonColors")
+                            {
+                                foreach (Control control in this.Controls)
+                                {
+                                    if (control is Button)
+                                    {
+                                        Button button = (Button)control;
+                                        button.FlatAppearance.BorderSize = 0;
+                                        button.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        button.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    }
+                                }
+                            }
+                            else if (reader.Name == "MenuStripColors")
+                            {
+                                foreach (Control control in this.Controls)
+                                {
+                                    if (!(control is MenuStrip))
+                                    {
+                                        continue;
+                                    }
+
+                                    MenuStrip menustrip = (MenuStrip)control;
+                                    menustrip.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                    menustrip.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                    foreach (ToolStripMenuItem firstLayer in menustrip.Items)
+                                    {
+                                        firstLayer.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                        firstLayer.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                        foreach (ToolStripMenuItem secondLayer in firstLayer.DropDownItems)
+                                        {
+                                            secondLayer.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                            secondLayer.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                            try
+                                            {
+                                                foreach (ToolStripComboBox thridLayer in secondLayer.DropDownItems)
+                                                {
+                                                    thridLayer.ForeColor = Color.FromArgb(int.Parse(reader.GetAttribute("ForeColor")));
+                                                    thridLayer.BackColor = Color.FromArgb(int.Parse(reader.GetAttribute("BackColor")));
+                                                }
+                                            }
+                                            catch (InvalidCastException)
+                                            {
+
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-            else if (theme == 1)
+            catch (KeyNotFoundException)
             {
-                currStyle = 1;
-                BackgroundImage = null;
-                BackColor = Color.FromArgb(38, 38, 43);
-                foreach (Control child in this.Controls)
+                MessageBox.Show("Please restart to finish loading themes");
+            }
+            #endregion
+        }
+
+        private bool LoadThemes()
+        {
+            if (!File.Exists("Themes//Themes.xml"))
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.IndentChars = "     ";
+                settings.NewLineOnAttributes = false;
+                settings.OmitXmlDeclaration = true;
+
+                string[] themes = Directory.GetFiles("Themes");
+
+                XmlWriter themexml = XmlWriter.Create("Themes//Themes.xml", settings);
+                themexml.WriteStartDocument();
+                themexml.WriteStartElement("Themes");
+
+                foreach (string theme in themes)
                 {
-                    if (child is ListBox)
+                    string filename = new FileInfo("Themes//" + theme).Name;
+                    Debug.WriteLine(filename);
+                    if(filename == "Themes.xml")
                     {
-                        ListBox lbl = (ListBox)child;
-                        lbl.BackColor = Color.FromArgb(51, 51, 55);
-                        lbl.ForeColor = Color.FromArgb(35, 123, 158);
+                        continue;
                     }
-
-                    if (child is TextBox)
+                    XmlReader reader = XmlReader.Create(theme);
+                    while (reader.Read())
                     {
-                        TextBox cb = (TextBox)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                        cb.BackColor = Color.FromArgb(51, 51, 55);
-                    }
-
-                    if (child is Label)
-                    {
-                        Label cb = (Label)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                    }
-
-                    if (child is CheckBox)
-                    {
-                        CheckBox cb = (CheckBox)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                    }
-
-                    if (child is ComboBox)
-                    {
-                        ComboBox cb = (ComboBox)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                        cb.BackColor = Color.FromArgb(51, 51, 55);
-                    }
-
-                    if (child is Button)
-                    {
-                        Button cb = (Button)child; ;
-                        cb.FlatAppearance.BorderSize = 0;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                        cb.BackColor = Color.FromArgb(51, 51, 55);
-                    }
-
-                    if (child is MenuStrip)
-                    {
-                        MenuStrip cb = (MenuStrip)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                        cb.BackColor = Color.FromArgb(38, 38, 43);
-
-                        foreach (ToolStripMenuItem firstLayer in cb.Items)
+                        if ((reader.NodeType == XmlNodeType.Element) && (reader.Name == "DisplayName"))
                         {
-                            firstLayer.ForeColor = Color.FromArgb(35, 123, 158);
-                            firstLayer.BackColor = Color.FromArgb(38, 38, 43);
-                            foreach (ToolStripMenuItem secondLayer in firstLayer.DropDownItems)
-                            {
-                                secondLayer.ForeColor = Color.FromArgb(35, 123, 158);
-                                secondLayer.BackColor = Color.FromArgb(38, 38, 43);
-                                foreach (ToolStripComboBox thridLayer in secondLayer.DropDownItems)
-                                {
-                                    thridLayer.ForeColor = Color.FromArgb(35, 123, 158);
-                                    thridLayer.BackColor = Color.FromArgb(38, 38, 43);
-                                }
-                            }
+                            themexml.WriteStartElement("Theme");
+                            themexml.WriteAttributeString("DisplayName", reader.ReadInnerXml());
+                            displayNameToFile[reader.ReadInnerXml()] = filename.Remove(filename.Length - 4);
+                            themexml.WriteAttributeString("FILE", filename.Remove(filename.Length - 4));
+                            themexml.WriteEndElement();
+                            break;
                         }
                     }
                 }
-                label23.Text = "Mod Creator: Set Theme To Dark";
-                listBox3.Items.Add("Mod Creator: Set Theme To Dark");
+                themexml.WriteEndDocument();
+                themexml.Close();
             }
             else
             {
-                currStyle = 2;
-                BackColor = Color.FromArgb(87, 81, 65);
-                foreach (Control child in this.Controls)
+                XmlReader xmlReader = XmlReader.Create("Themes//Themes.xml");
+                while (xmlReader.Read())
                 {
-                    if (child is ListBox)
+                    if ((xmlReader.NodeType == XmlNodeType.Element) && (xmlReader.Name == "Theme"))
                     {
-                        ListBox lbl = (ListBox)child;
-                        lbl.BackColor = Color.FromArgb(58, 26, 37);
-                        lbl.ForeColor = Color.FromArgb(158, 41, 43);
-                    }
-
-                    if (child is TextBox)
-                    {
-                        TextBox cb = (TextBox)child;
-                        cb.ForeColor = Color.FromArgb(35, 123, 158);
-                        cb.BackColor = Color.FromArgb(58, 26, 37);
-                    }
-
-                    if (child is Label)
-                    {
-                        Label cb = (Label)child;
-                        cb.ForeColor = Color.FromArgb(158, 41, 43);
-                    }
-
-                    if (child is CheckBox)
-                    {
-                        CheckBox cb = (CheckBox)child;
-                        cb.ForeColor = Color.FromArgb(158, 41, 43);
-                        //cb.BackColor = Color.FromArgb(58, 26, 37);
-                    }
-
-                    if (child is ComboBox)
-                    {
-                        ComboBox cb = (ComboBox)child;
-                        cb.ForeColor = Color.FromArgb(158, 41, 43);
-                        cb.BackColor = Color.FromArgb(51, 51, 55);
-                    }
-
-                    if (child is Button)
-                    {
-                        Button cb = (Button)child; ;
-                        cb.FlatAppearance.BorderSize = 0;
-                        cb.ForeColor = Color.FromArgb(158, 41, 43);
-                        cb.BackColor = Color.FromArgb(58, 26, 37);
-                    }
-
-                    if (child is MenuStrip)
-                    {
-                        MenuStrip cb = (MenuStrip)child;
-                        cb.ForeColor = Color.FromArgb(158, 41, 43);
-                        cb.BackColor = Color.FromArgb(87, 81, 65);
-
-                        foreach (ToolStripMenuItem firstLayer in cb.Items)
+                        if (xmlReader.HasAttributes)
                         {
-                            firstLayer.ForeColor = Color.FromArgb(158, 41, 43);
-                            firstLayer.BackColor = Color.FromArgb(87, 81, 65);
-                            foreach (ToolStripMenuItem secondLayer in firstLayer.DropDownItems)
-                            {
-                                secondLayer.ForeColor = Color.FromArgb(158, 41, 43);
-                                secondLayer.BackColor = Color.FromArgb(87, 81, 65);
-                                foreach (ToolStripComboBox thridLayer in secondLayer.DropDownItems)
-                                {
-                                    thridLayer.ForeColor = Color.FromArgb(158, 41, 43);
-                                    thridLayer.BackColor = Color.FromArgb(87, 81, 65);
-                                }
-                            }
+                            displayNameToFile[xmlReader.GetAttribute("DisplayName")] = xmlReader.GetAttribute("FILE");
                         }
                     }
                 }
-                label23.Text = "Mod Creator: Set Theme To Software Inc. Fall";
-                listBox3.Items.Add("Mod Creator: Set Theme To Software Inc. Fall");
             }
-        }
 
+            toolStripComboBox2.Items.Clear();
+            foreach (KeyValuePair<string, string> entry in displayNameToFile)
+            {
+                // do something with entry.Value or entry.Key
+                Debug.WriteLine(entry.Value + " = " + entry.Key);
+                toolStripComboBox2.Items.Add(entry.Key);
+            }
+            return true;
+        }
 
         private void saveToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -869,14 +847,22 @@ namespace SoftwareIncSoftwareCreator
         {
             using(NewSoftwareTypeMenu n = new NewSoftwareTypeMenu())
             {
-                n.Style = currStyle;
-                n.NameGens = NameGenerators;
-                if(n.ShowDialog() == DialogResult.OK)
+                if (SoftwareTypes != null)
                 {
-                    SoftwareTypes.Add(new SoftwareType(n.Name_, n.Unlock, n.Category, n.Description, n.Random, n.Popularity, n.Retention, n.Iterative, n.TimeScale, n.OSLimit,
-                        n.NameGenerator, n.IdealPrice, n.OSSpecific, n.OneClient, n.InHouse, new List<Categories>(), new List<Features>()));
-                    listBox4.Items.Add(n.Name_);
-                    listBox4.SelectedIndex = 0;
+                    n.Style = displayNameToFile[currStyle];
+                    n.NameGens = NameGenerators;
+                    if (n.ShowDialog() == DialogResult.OK)
+                    {
+                        SoftwareTypes.Add(new SoftwareType(n.Name_, n.Unlock, n.Category, n.Description, n.Random, n.Popularity, n.Retention, n.Iterative, n.TimeScale, n.OSLimit,
+                            n.NameGenerator, n.IdealPrice, n.OSSpecific, n.OneClient, n.InHouse, new List<Categories>(), new List<Features>()));
+                        listBox4.Items.Add(n.Name_);
+                        listBox4.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    label23.Text = "Mod Creator: Exporting Mod ";
+                    listBox3.Items.Add("Mod Creator: ");
                 }
             }
         }
@@ -1233,7 +1219,7 @@ namespace SoftwareIncSoftwareCreator
             {
                 using (NewNameGeneratorMenu nngm = new NewNameGeneratorMenu())
                 {
-                    nngm.Style = currStyle;
+                    nngm.Style = displayNameToFile[currStyle];
                     if (nngm.ShowDialog() == DialogResult.OK)
                     {
                         NameGenerators.Add(new NameGenerator(nngm.Base, nngm.Base2, nngm.End, nngm.Name_));
@@ -1286,6 +1272,28 @@ namespace SoftwareIncSoftwareCreator
         {
             NameGenerators.RemoveAt(listBox5.SelectedIndex);
             listBox5.Items.RemoveAt(listBox5.SelectedIndex);
+        }
+
+        private void themeCreatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ThemeCreator themeCreator = new ThemeCreator())
+            {
+                if(themeCreator.ShowDialog() == DialogResult.OK)
+                {
+                    File.Delete("Themes//Themes.xml");
+                }
+            }
+        }
+
+        private void infoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using(Info info = new Info())
+            {
+                if(info.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
     }
 }

@@ -336,6 +336,7 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(60, 453);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -345,6 +346,7 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(141, 453);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -391,6 +393,7 @@
             this.Controls.Add(this.label17);
             this.Name = "NewFeatureMenu";
             this.Text = "NewFeatureMenu";
+            this.Load += new System.EventHandler(this.NewFeatureMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -53,11 +53,11 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.OkBTN = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.CancelBTN = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.OkBTN = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -294,15 +294,6 @@
             this.label10.Text = "Please fill in the boxes below, and they can just be tempory for now as you can c" +
     "hange them later";
             // 
-            // OkBTN
-            // 
-            this.OkBTN.Location = new System.Drawing.Point(99, 441);
-            this.OkBTN.Name = "OkBTN";
-            this.OkBTN.Size = new System.Drawing.Size(75, 23);
-            this.OkBTN.TabIndex = 29;
-            this.OkBTN.Text = "Create";
-            this.OkBTN.UseVisualStyleBackColor = true;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -324,6 +315,7 @@
             // CancelBTN
             // 
             this.CancelBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelBTN.Location = new System.Drawing.Point(180, 441);
             this.CancelBTN.Name = "CancelBTN";
             this.CancelBTN.Size = new System.Drawing.Size(75, 23);
@@ -339,18 +331,28 @@
             this.comboBox2.Size = new System.Drawing.Size(161, 21);
             this.comboBox2.TabIndex = 33;
             // 
+            // OkBTN
+            // 
+            this.OkBTN.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.OkBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkBTN.Location = new System.Drawing.Point(93, 441);
+            this.OkBTN.Name = "OkBTN";
+            this.OkBTN.Size = new System.Drawing.Size(75, 23);
+            this.OkBTN.TabIndex = 34;
+            this.OkBTN.Text = "Create";
+            this.OkBTN.UseVisualStyleBackColor = true;
+            // 
             // NewSoftwareTypeMenu
             // 
-            this.AcceptButton = this.OkBTN;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBTN;
             this.ClientSize = new System.Drawing.Size(277, 475);
+            this.Controls.Add(this.OkBTN);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.CancelBTN);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.OkBTN);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -412,10 +414,10 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button OkBTN;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button CancelBTN;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button OkBTN;
     }
 }

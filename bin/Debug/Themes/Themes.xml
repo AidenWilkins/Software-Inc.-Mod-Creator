@@ -1,0 +1,6 @@
+﻿<Themes>
+     <Theme DisplayName="Dark" FILE="DarkTheme" />
+     <Theme DisplayName="Light" FILE="LightTheme" />
+     <Theme DisplayName="Purple Dark Neon" FILE="TestTheme3" />
+     <Theme DisplayName="Windows Xp" FILE="TestTheme4" />
+</Themes>

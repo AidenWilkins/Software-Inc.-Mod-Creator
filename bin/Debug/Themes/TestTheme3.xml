@@ -1,0 +1,11 @@
+﻿<Theme>
+     <DisplayName>Purple Dark Neon</DisplayName>
+     <WindowColors ForeColor="-16777216" BackColor="-14277077" />
+     <ListBoxColors ForeColor="-4487428" BackColor="-14737633" />
+     <TextBoxColors ForeColor="-4487428" BackColor="-14737633" />
+     <LabelColors ForeColor="-4487428" BackColor="-14277077" />
+     <CheckBoxColors ForeColor="-4487428" BackColor="-14737633" />
+     <ComboBoxColors ForeColor="-4487428" BackColor="-14737633" />
+     <ButtonColors ForeColor="-4487428" BackColor="-14737633" />
+     <MenuStripColors ForeColor="-4487428" BackColor="-14277077" />
+</Theme>

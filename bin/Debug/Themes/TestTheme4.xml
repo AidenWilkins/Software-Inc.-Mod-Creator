@@ -1,0 +1,11 @@
+﻿<Theme>
+     <DisplayName>Windows Xp</DisplayName>
+     <WindowColors ForeColor="-16777216" BackColor="-15006813" />
+     <ListBoxColors ForeColor="-11669782" BackColor="-16754177" />
+     <TextBoxColors ForeColor="-11669782" BackColor="-16754177" />
+     <LabelColors ForeColor="-11669782" BackColor="-15006813" />
+     <CheckBoxColors ForeColor="-11669782" BackColor="-15006813" />
+     <ComboBoxColors ForeColor="-11669782" BackColor="-16754177" />
+     <ButtonColors ForeColor="-11669782" BackColor="-16754177" />
+     <MenuStripColors ForeColor="-11669782" BackColor="-16754177" />
+</Theme>
